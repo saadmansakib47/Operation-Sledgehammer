@@ -1,0 +1,13 @@
+from threading import Lock
+
+balance = 1000
+lock = Lock()
+
+def withdraw(amount):
+    global balance
+    with lock:  # Ensures only one thread modifies balance at a time
+        if balance >= amount:
+            balance -= amount
+            print(f"Withdrawal successful! New balance: {balance}")
+        else:
+            print("Insufficient funds!")
