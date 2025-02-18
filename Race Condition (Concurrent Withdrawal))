@@ -1,0 +1,20 @@
+balance = 1000
+
+def withdraw(amount):
+    global balance
+    if balance >= amount:
+        balance -= amount
+        print(f"Withdrawal successful! New balance: {balance}")
+    else:
+        print("Insufficient funds!")
+
+# Simulating concurrent withdrawals
+from threading import Thread
+
+t1 = Thread(target=withdraw, args=(500,))
+t2 = Thread(target=withdraw, args=(500,))
+
+t1.start()
+t2.start()
+t1.join()
+t2.join()
